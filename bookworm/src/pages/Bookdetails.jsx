@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -27,9 +26,9 @@ const BookDetails = () => {
   if (!book) return <div className="text-center p-20 text-red-500">Book not found.</div>;
 
   return (
-    <div className="min-h-screen py-10 px-4 md:px-10">
+    <div className="min-h-screen py-8 px-4 md:px-10">
       <button 
-        onClick={() => navigate("/")} 
+        onClick={() => navigate(-1)} 
         className="mb-8 px-6 py-2 bg-white text-purple-700 font-semibold rounded-full shadow hover:bg-purple-100 transition"
       >
         ← Back to Library
@@ -64,13 +63,14 @@ const BookDetails = () => {
             </div>
 
             <div className="mt-10">
-           {/* New Code: Link to internal Reader */}
-                <Link 
-                to={`/read/${book.id}`}
+              <a 
+                href={book.formats["text/html"] || book.formats["text/plain; charset=utf-8"]} 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 className="inline-block bg-linear-to-r from-purple-600 to-pink-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
-                >
-                Read Book Now 🚀
-                </Link>
+              >
+                Read Now 
+              </a>
             </div>
           </div>
         </div>
