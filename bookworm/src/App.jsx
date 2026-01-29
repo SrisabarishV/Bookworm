@@ -6,13 +6,12 @@ import BookReader from './pages/BookReader';
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* Navbar is outside Routes so it stays on every page */}
+   <BrowserRouter basename="/Bookworm">
       <Navbar />
       <Routes>
-       <Route path="/" element={<><Home /></>} />
-        <Route path="/book/:id" element={<><BookDetails /></>} />
-        <Route path="/read/:id" element={<BookReader />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/book/:id" element={<BookDetails />} />
+        
       </Routes>
     </BrowserRouter>
   );
